@@ -1,0 +1,70 @@
+{
+  "name": "cinema-tavern-bot",
+  "version": "0.1.0",
+  "description": "Discord-bot for organizing movie nights",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "rimraf dist/ *.tsbuildinfo && tsc --build",
+    "dev": "nodemon",
+    "start": "node dist/",
+    "lint": "eslint --ext .ts src/**/*.ts",
+    "lint:fix": "eslint --ext .ts --fix src/**/*.ts",
+    "prettier:check": "prettier --check src/**/*.ts",
+    "prettier:diff": "prettier --list-different src/**/*.ts",
+    "prettier:fix": "prettier --write src/**/*.ts",
+    "test": "echo \"No test specified yet\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neomedved/cinema-tavern-bot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "movie-night"
+  ],
+  "author": "Artem Medvedev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neomedved/cinema-tavern-bot/issues"
+  },
+  "homepage": "https://github.com/neomedved/cinema-tavern-bot#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix"
+    ]
+  },
+  "nodemonConfig": {
+    "watch": "src/",
+    "ignore": [
+      "node_modules/",
+      "dist/"
+    ],
+    "ext": "ts",
+    "exec": "tsc --build --incremental && tsc --sourceMap && node -r dotenv/config dist/"
+  },
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.0",
+    "@types/node": "^14.14.20",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-typescript": "^12.0.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^4.3.7",
+    "lint-staged": "^10.5.3",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.3"
+  }
+}
